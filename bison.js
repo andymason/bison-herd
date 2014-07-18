@@ -22,7 +22,7 @@ function setupStage() {
 
 
 var Person = function(x, y, className) {
-        this.width = maxRight / 4;
+        this.width = maxBottom / 4;
         this.height = this.width * 2.8;
         this.x = x;
         this.y = y - this.height;
@@ -165,7 +165,7 @@ function init() {
     addActor(p1);
     addActor(p2);
 
-    var  wasp = new Wasp(maxRight/2, maxBottom - maxBottom/2);
+    var  wasp = new Wasp(maxRight/2, maxBottom/4);
     addActor(wasp);
 
     anim();
