@@ -17,9 +17,9 @@ function setupStage() {
 }
 
 
-var Person = function(x, y) {
+var Person = function(x, y, className) {
         this.width = maxRight / 4;
-        this.height = this.width * 1.5;
+        this.height = this.width * 2.8;
         this.x = x;
         this.y = y - this.height;
         this.count = Math.random() * 10;
@@ -27,6 +27,7 @@ var Person = function(x, y) {
         this.speed = 10;
 
         this.elm = $('<div>').attr('class', 'person');
+        this.elm.addClass(className);
         this.elm.css('left', this.x + 'px');
         this.elm.css('top', this.y + 'px');
         this.elm.css('height', this.height + 'px');
@@ -151,8 +152,8 @@ function init() {
         addActor(bison);
     }
 
-    var p1 = new Person(maxRight/5, maxBottom - maxBottom/4 );
-    var p2 = new Person(maxRight/1.8, maxBottom - maxBottom/4 );
+    var p1 = new Person(maxRight/5, maxBottom - maxBottom/5, 'p1');
+    var p2 = new Person(maxRight/1.8, maxBottom - maxBottom/5, 'p2');
     addActor(p1);
     addActor(p2);
 

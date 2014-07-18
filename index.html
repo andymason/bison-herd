@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <style>
         .bison {
-            /*background: transparent url(bison.png) left top no-repeat; */
+            background: transparent url(bison.png) left top no-repeat;
             background-size: contain;
             position: absolute;
             width: 10px;
@@ -16,7 +16,7 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            /* background: transparent url(background.jpg) 0 0 no-repeat; */
+            background: transparent url(background.jpg) 0 0 no-repeat; 
             background-size: cover;
         }
 
@@ -29,13 +29,24 @@
 
         .person {
             position: absolute;
-            background: #CCC;
             transform-origin: 50% 50%;
             -webkit-transform-origin: 0% 40%;
             -moz-transform-origin: 50% 50%;
             -ms-transform-origin: 50% 50%;
             z-index: 2;
+            background-repeat: no-repeat;
+            background-position: 0 50%;
+            background-size: contain;
         }
+        
+        .p1 {
+            background-image: url(aisha.png);
+        }
+        
+        .p2 {
+            background-image: url(nabeelah.png);
+        }
+
 
         .moreBison {
             font-size: 16px;
