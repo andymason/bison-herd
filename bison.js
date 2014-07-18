@@ -1,7 +1,9 @@
 var maxLeft;
 var maxRight;
+var maxBottom;
 var stage;
-var MAX_HERD = 80;
+var startBison = 2;
+var MAX_HERD = 200;
 var MIN_SPEED = 3;
 var MAX_SPEED = 5;
 var herd = [];
@@ -16,8 +18,8 @@ function setupStage() {
 
 
 var Person = function(x, y) {
-        this.width = 380;
-        this.height = 500;
+        this.width = maxRight / 4;
+        this.height = this.width * 1.5;
         this.x = x;
         this.y = y - this.height;
         this.count = Math.random() * 10;
@@ -37,23 +39,56 @@ Person.prototype.move = function() {
 
 
     this.count += 0.2;
-    this.elm.css('top', (this.y -  Math.sin(this.count) * 20)+ 'px');
+    var angle = (Math.sin(this.count) * 5);
+    this.elm.css('top', (this.y -  Math.sin(this.count) * maxBottom/24)+ 'px');
+    this.elm.css('transform', 'rotate(' + angle + 'deg)');
+
+};
+
+var Wasp = function(x, y) {
+        this.width = maxRight / 20;
+        this.height = this.width * 0.7;
+        this.x = x;
+        this.y = y - this.height;
+        this.count = Math.random() * 10;
+        this.countY = Math.random() * 10;
+
+        this.speed = 10;
+
+        this.elm = $('<div>').attr('class', 'wasp');
+        this.elm.css('left', this.x + 'px');
+        this.elm.css('top', this.y + 'px');
+        this.elm.css('height', this.height + 'px');
+        this.elm.css('width', this.width + 'px');
+};
+
+Wasp.prototype.move = function() {
+    // this.x -= this.speed;
+    // this.elm.css('left', this.x + 'px');
+
+
+    this.count += 0.04;
+    this.countY += 0.2;
+    this.elm.css('top', (this.y -  Math.sin(this.countY) * maxBottom/24)+ 'px');
+    this.elm.css('left', (this.x -  Math.sin(this.count) * maxRight/2.5)+ 'px');
 
 };
 
 
 var Bison = function() {
-    this.width = 350;
-    this.height = 250;
+    this.width = maxBottom/3;
+    this.height = this.width * 0.9;
     this.x = Math.random() * maxRight;
     this.y = maxBottom - this.height;
     this.count = Math.random() * 10;
     this.speed = MIN_SPEED + (Math.random() * (MAX_SPEED - MIN_SPEED));
+    
     this.elm = $('<div>').attr('class', 'bison');
     this.elm.css('left', this.x + 'px');
     this.elm.css('top', this.y + 'px');
     this.elm.css('height', this.height + 'px');
     this.elm.css('width', this.width + 'px');
+
 };
 
 Bison.prototype.move = function() {
@@ -76,6 +111,22 @@ function addActor(actor) {
     stage.append(actor.elm);
 }
 
+var interval = null;
+
+function addMoreBison(e) {
+    e.preventDefault();
+    interval = setInterval(function() {
+        var bison = new Bison();
+        addActor(bison);
+        console.log(herd.length);
+    }, 200);
+}
+
+function stopMoreBison(e) {
+    e.preventDefault();
+    clearInterval(interval);
+}
+
 function anim() {
     for (var i = 0; i < herd.length; i++) {
         herd[i].move();
@@ -86,13 +137,27 @@ function anim() {
 function init() {
     setupStage();
     window.addEventListener('resize', setupStage, false);
-    for (var i = 0; i < MAX_HERD; i++) {
+
+    var btn = $('.moreBison');
+    btn.on('mousedown', addMoreBison);
+    btn.on('touchstart', addMoreBison);
+    btn.on('mouseup', stopMoreBison);
+    btn.on('touchend', stopMoreBison);
+    btn.on('touchcancel', stopMoreBison);
+
+
+    for (var i = 0; i < startBison; i++) {
         var bison = new Bison();
         addActor(bison);
     }
 
-    var p1 = new Person(maxRight/2, maxBottom - 250);
+    var p1 = new Person(maxRight/5, maxBottom - maxBottom/4 );
+    var p2 = new Person(maxRight/1.8, maxBottom - maxBottom/4 );
     addActor(p1);
+    addActor(p2);
+
+    var  wasp = new Wasp(maxRight/2, maxBottom - maxBottom/2);
+    addActor(wasp);
 
     anim();
 }

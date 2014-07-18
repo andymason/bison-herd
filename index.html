@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset='utf-8'>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <style>
         .bison {
-            /* background: transparent url(bison.png) left top no-repeat; */
-            background: #EEE;
+            /*background: transparent url(bison.png) left top no-repeat; */
             background-size: contain;
             position: absolute;
             width: 10px;
@@ -30,13 +30,53 @@
         .person {
             position: absolute;
             background: #CCC;
+            transform-origin: 50% 50%;
+            -webkit-transform-origin: 0% 40%;
+            -moz-transform-origin: 50% 50%;
+            -ms-transform-origin: 50% 50%;
+            z-index: 2;
         }
+
+        .moreBison {
+            font-size: 16px;
+            position: absolute;
+            bottom: 3%;
+            right: 3%;
+            padding: 8px 10px;
+            z-index: 100;
+            
+        }
+
+        .wasp {
+            position: absolute;
+            background: transparent url(wasp.png) 0 0 no-repeat;
+            background-size: cover;
+            z-index: 3;
+        }
+        
+        h1 {
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            top: 5%;
+            left: 0;
+            font-size: 300%;
+            color: #FFF;
+            z-index: 10;
+            font-family: arial, sans-serif;
+            font-weight: bold;
+
+        }
+
     </style>
 </head>
 <body>
 
 
-<div class="stage"></div>
+<div class="stage">
+    <h1>Something here here here</h1>
+    <button class="moreBison">More bison</button>
+</div>
 
 <script src="jquery-1.11.1.min.js"></script>
 <script src="tween.min.js"></script>
