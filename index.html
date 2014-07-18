@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <style>
+        .bison {
+            /* background: transparent url(bison.png) left top no-repeat; */
+            background: #EEE;
+            background-size: contain;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            /* background: transparent url(background.jpg) 0 0 no-repeat; */
+            background-size: cover;
+        }
+
+        .stage {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .person {
+            position: absolute;
+            background: #CCC;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="stage"></div>
+
+<script src="jquery-1.11.1.min.js"></script>
+<script src="tween.min.js"></script>
+<script src="//interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js"></script>
+<script>
+    iframeMessenger.enableAutoResize();
+</script>
+<script src="bison.js"></script>
+
+</body>
+</html>
