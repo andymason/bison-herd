@@ -83,7 +83,7 @@ Wasp.prototype.move = function() {
 };
 
 
-var Bison = function() {
+var Bison = function(classname) {
     this.width = maxBottom/3;
     this.height = this.width * 0.9;
     this.x = Math.random() * maxRight;
@@ -91,7 +91,7 @@ var Bison = function() {
     this.count = Math.random() * 10;
     this.speed = MIN_SPEED + (Math.random() * (MAX_SPEED - MIN_SPEED));
     
-    this.elm = $('<div>').attr('class', 'bison');
+    this.elm = $('<div>').attr('class', classname);
     this.elm.css('left', this.x + 'px');
     this.elm.css('top', this.y + 'px');
     this.elm.css('height', this.height + 'px');
@@ -124,15 +124,29 @@ var interval = null;
 function addMoreBison(e) {
     e.preventDefault();
     interval = setInterval(function() {
-        var bison = new Bison();
+        var bison = new Bison('bison');
+        addActor(bison);
+        console.log(herd.length);
+    }, 200);
+}
+function addMoreBruno(e) {
+    e.preventDefault();
+    intervalbruno = setInterval(function() {
+        var bison = new Bison('bruno');
         addActor(bison);
         console.log(herd.length);
     }, 200);
 }
 
+
 function stopMoreBison(e) {
     e.preventDefault();
     clearInterval(interval);
+}
+
+function stopMoreBruno(e) {
+    e.preventDefault();
+    clearInterval(intervalbruno);
 }
 
 function anim() {
@@ -152,10 +166,17 @@ function init() {
     btn.on('mouseup', stopMoreBison);
     btn.on('touchend', stopMoreBison);
     btn.on('touchcancel', stopMoreBison);
+    
+    var btnbruno = $('.moreBruno');
+    btnbruno.on('mousedown', addMoreBruno);
+    btnbruno.on('touchstart', addMoreBruno);
+    btnbruno.on('mouseup', stopMoreBruno);
+    btnbruno.on('touchend', stopMoreBruno);
+    btnbruno.on('touchcancel', stopMoreBruno);
 
 
     for (var i = 0; i < startBison; i++) {
-        var bison = new Bison();
+        var bison = new Bison('bison');
         addActor(bison);
     }
 
@@ -170,9 +191,9 @@ function init() {
 
     anim();
 }
-$('#bruno').click(function(){
-var p3 = new Person(maxRight/2, maxBottom - 250,'bruno');
-	addActor(p3);
-});
+// $('#bruno').click(function(){
+// var p3 = new Person(maxRight/2, maxBottom - 250,'bruno');
+// 	addActor(p3);
+// });
 
 init();
