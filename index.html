@@ -4,8 +4,8 @@
     <meta charset='utf-8'>
     <style>
         .bison {
-            /* background: transparent url(bison.png) left top no-repeat; */
-            background: #EEE;
+            background: transparent url(bison.png) left top no-repeat;
+/*             background: #EEE; */
             background-size: contain;
             position: absolute;
             width: 10px;
@@ -27,16 +27,36 @@
             overflow: hidden;
         }
 
-        .person {
+        .aisha {
             position: absolute;
-            background: #CCC;
+            background-image: url(aisha.png);
+            background-repeat:no-repeat;
+            background-size:90%;
+        }
+        .nabeelah {
+            position: absolute;
+           background-image: url(nabeelah.png);
+            background-repeat:no-repeat;
+            margin-left:250px;
+            background-size:75%;
+        }
+        .bruno {
+            position: absolute;
+           background-image: url(bruno.jpg);
+            background-repeat:no-repeat;
+            margin-left:-250px;
+            background-size:75%;
+        }
+        #bruno{
+        	background:#005689;
+        	width:40px;
         }
     </style>
 </head>
 <body>
 
 
-<div class="stage"></div>
+<div class="stage"><button id="bruno">Add Bruno Martins Indi</button></div>
 
 <script src="jquery-1.11.1.min.js"></script>
 <script src="tween.min.js"></script>

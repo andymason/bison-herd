@@ -5,6 +5,7 @@ var MAX_HERD = 80;
 var MIN_SPEED = 3;
 var MAX_SPEED = 5;
 var herd = [];
+var backgrounds = ["office.jpg","golfwang.jpg"];
 
 
 function setupStage() {
@@ -12,21 +13,23 @@ function setupStage() {
     maxLeft = 0;
     maxRight = stage.width();
     maxBottom = stage.height();
+    var randomNumber = Math.floor(Math.random()*backgrounds.length);
+    $('body').css('background-image','url('+backgrounds[randomNumber]+')');
 }
 
 
-var Person = function(x, y) {
-        this.width = 380;
+var Person = function(x, y,name) {
+        this.width = 180;
         this.height = 500;
-        this.x = x;
+        this.x = "30%";
         this.y = y - this.height;
         this.count = Math.random() * 10;
 
         this.speed = 10;
 
-        this.elm = $('<div>').attr('class', 'person');
-        this.elm.css('left', this.x + 'px');
-        this.elm.css('top', this.y + 'px');
+        this.elm = $('<div>').attr('class', name);
+        this.elm.css('left', this.x );
+        this.elm.css('top', this.y +"px");
         this.elm.css('height', this.height + 'px');
         this.elm.css('width', this.width + 'px');
 };
@@ -91,11 +94,17 @@ function init() {
         addActor(bison);
     }
 
-    var p1 = new Person(maxRight/2, maxBottom - 250);
+    var p1 = new Person(maxRight/2, maxBottom - 250,'nabeelah');
+    var p2 = new Person(maxRight/2, maxBottom - 250,'aisha');
+    
     addActor(p1);
+    addActor(p2);
 
     anim();
 }
-
+$('#bruno').click(function(){
+var p3 = new Person(maxRight/2, maxBottom - 250,'bruno');
+	addActor(p3);
+});
 
 init();
