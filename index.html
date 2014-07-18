@@ -25,16 +25,19 @@
             height: 100%;
             position: relative;
             overflow: hidden;
+            -webkit-transform : translateZ(0); 
+	-o-transform : translateZ(0); 
+	-moz-transform : translateZ(0); 
+	transform : translateZ(0); 
         }
 
 
         .person {
             position: absolute;
-          /*
              transform-origin: 50% 50%;
             -webkit-transform-origin: 0% 40%;
             -moz-transform-origin: 50% 50%;
-            -ms-transform-origin: 50% 50%; */
+            -ms-transform-origin: 50% 50%;
             z-index: 2;
             background-repeat: no-repeat;
             background-position: 0 50%;
@@ -71,6 +74,16 @@
             z-index: 100;
             
         }
+        
+         .moreBruno {
+            font-size: 16px;
+            position: absolute;
+            bottom: 3%;
+            right: 15%;
+            padding: 8px 10px;
+            z-index: 100;
+            
+        }
 
         .wasp {
             position: absolute;
@@ -90,8 +103,7 @@
             z-index: 10;
             font-family: arial, sans-serif;
             font-weight: bold;
-            line-height: 1em;
-
+			background: rgba(0,0,0,0.2);
         }
 
     </style>
@@ -101,13 +113,12 @@
 
 
 <div class="stage">
-    <h1>Something here here here</h1>
-    <button class="moreBruno">Add Bruno Martins Indi</button>
+    <h1>It's bee'n bzzzzrilliant, Aisha and Nabeelah</h1>
+    <button class="moreBruno">More Martins Indi</button>
     <button class="moreBison">More bison</button>
 </div>
 
 <script src="jquery-1.11.1.min.js"></script>
-<script src="//interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js"></script>
 <script src="bison.js"></script>
 
 </body>

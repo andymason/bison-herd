@@ -7,7 +7,7 @@ var MAX_HERD = 200;
 var MIN_SPEED = 3;
 var MAX_SPEED = 5;
 var herd = [];
-var backgrounds = ["office.jpg","golfwang.jpg"];
+var backgrounds = ["office.jpg"];
 
 
 function setupStage() {
@@ -16,7 +16,7 @@ function setupStage() {
     maxRight = stage.width();
     maxBottom = stage.height();
     var randomNumber = Math.floor(Math.random()*backgrounds.length);
-    $('body').css('background-image','url('+backgrounds[randomNumber]+')');
+//     $('body').css('background-image','url('+backgrounds[randomNumber]+')');
 }
 
 
@@ -49,7 +49,7 @@ Person.prototype.move = function() {
     this.count += 0.2;
     var angle = (Math.sin(this.count) * 5);
     this.elm.css('top', (this.y -  Math.sin(this.count) * maxBottom/24)+ 'px');
-    this.elm.css('transform', 'rotate(' + angle + 'deg)');
+    //this.elm.css('transform', 'rotate(' + angle + 'deg)');
 
 };
 
